@@ -28,7 +28,7 @@ function StatusInput({
           className="border-b border-black w-full"
           type="text"
           onChange={onTitleChange}
-          value={getTitle()}
+          defaultValue={getTitle()}
         ></input>
       </div>
       <div className="flex-1 flex flex-row">
@@ -36,7 +36,7 @@ function StatusInput({
           className="border-b border-black flex-1"
           type="text"
           onChange={onTimeChange}
-          value={getTimeString()}
+          defaultValue={getTimeString()}
         ></input>
         <span className="text-xl w-2/12 mx-4">{getTimeSum()}</span>
       </div>
