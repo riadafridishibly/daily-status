@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useRef } from "react";
 import { formatDate } from "../utils/utils";
 
 const LOCAL_WEEK = "W";
@@ -13,6 +13,7 @@ function convertUTCDateToLocalDate(date) {
 function Header({ dateString, setCurrentDate, getTotal }) {
   let date = new Date(Date.parse(dateString));
   let formattedDate = formatDate(date);
+  const datePickerRef = useRef(null);
   return (
     <div className="w-full flex flex-col items-center">
       <h1 className="text-3xl font-semibold p-4">DailyStatus</h1>
@@ -20,6 +21,7 @@ function Header({ dateString, setCurrentDate, getTotal }) {
       <div className="flex flex-row items-center justify-center gap-12 pt-8">
         <div className="flex items-center justify-center">
           <input
+            ref={datePickerRef}
             className="text-2xl"
             type="date"
             name="date"
@@ -27,7 +29,12 @@ function Header({ dateString, setCurrentDate, getTotal }) {
             onClick={(e) => e.currentTarget.showPicker()}
             onChange={(e) => setCurrentDate(e.target.value)}
           />
-          <span className="text-2xl">{format(date, "dd LLL yyyy")}</span>
+          <button
+            onClick={() => datePickerRef.current?.showPicker()}
+            className="text-2xl"
+          >
+            {format(date, "dd LLL yyyy")}
+          </button>
         </div>
         <span>
           <span className="text-2xl"> {format(date, ISO_WEEK)}</span> Week
