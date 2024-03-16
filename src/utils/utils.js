@@ -18,7 +18,11 @@ export function replaceAllWhiteSpace(str) {
 }
 
 export function formatDuration(ms) {
-  if (ms < 0) ms = -ms;
+  let neg = false;
+  if (ms < 0) {
+    ms = -ms;
+    neg = true;
+  }
   const time = {
     d: Math.floor(ms / 86400000),
     h: Math.floor(ms / 3600000) % 24,
@@ -26,10 +30,14 @@ export function formatDuration(ms) {
     s: Math.floor(ms / 1000) % 60,
     ms: Math.floor(ms) % 1000,
   };
-  return Object.entries(time)
+  let str = Object.entries(time)
     .filter((val) => val[1] !== 0)
     .map(([key, val]) => `${val}${key}`)
     .join("");
+  if (neg) {
+    str = `-${str}`;
+  }
+  return str;
 }
 
 export function calculateTotal(values) {
@@ -38,7 +46,7 @@ export function calculateTotal(values) {
     return sum;
   }
   for (let key in values) {
-    sum += parse(values[key]["time"]);
+    sum += duration(values[key]["time"]);
   }
   return sum;
 }
