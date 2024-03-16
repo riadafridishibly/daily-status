@@ -9,20 +9,25 @@ import {
   duration,
 } from "./utils/utils";
 import { useApplicationState } from "./hooks/hooks";
+import { useDebouncedCallback } from "use-debounce";
 
 function App() {
   const [currentDate, setCurrentDate] = useState(today());
   const { items, add, remove, update } = useApplicationState(currentDate);
 
+  const debouncedUpdate = useDebouncedCallback((id, object) => {
+    update(id, object);
+  }, 100);
+
   const handleTitleChange = (id) => {
     return (event) => {
-      update(id, { title: event.target.value });
+      debouncedUpdate(id, { title: event.target.value });
     };
   };
 
   const handleTimeChange = (id) => {
     return (event) => {
-      update(id, { time: event.target.value });
+      debouncedUpdate(id, { time: event.target.value });
     };
   };
   const handleRemove = (id) => {
@@ -55,10 +60,10 @@ function App() {
               onTimeChange={handleTimeChange(id)}
               getTimeSum={getDuration(id)}
               getTitle={() => {
-                return items?.values[id]?.title;
+                return items?.values[id]?.title || "";
               }}
               getTimeString={() => {
-                return items?.values[id]?.time;
+                return items?.values[id]?.time || "";
               }}
               onRemove={handleRemove(id)}
             />
