@@ -45,7 +45,7 @@ function App() {
         }}
       />
       <div className="pt-10 w-full flex flex-col items-center justify-center">
-        <div className="py-8 px-10 w-full flex flex-col items-center justify-center">
+        <div className="max-w-screen-lg py-8 px-10 w-full flex flex-col items-center justify-center">
           {items.orders.map((id, index) => (
             <StatusInput
               key={id}
