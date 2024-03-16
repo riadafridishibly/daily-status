@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
+
 export function useApplicationState(dateStr) {
   if (!dateStr) {
     dateStr = today();
@@ -29,8 +30,9 @@ export function useApplicationState(dateStr) {
       const nextId = getId();
       const orders = [...curr.orders, nextId];
       const values = { ...curr.values, [nextId]: { title: "", time: "" } };
-      console.log({ orders, values });
-      return { orders, values };
+      const newData = { orders, values };
+      saveToLocalStorage(newData);
+      return newData;
     });
   };
 
@@ -43,7 +45,9 @@ export function useApplicationState(dateStr) {
         orders.splice(index, 1);
         delete values[id];
       }
-      return { orders, values };
+      const newData = { orders, values };
+      saveToLocalStorage(newData);
+      return newData;
     });
   };
 
@@ -60,7 +64,9 @@ export function useApplicationState(dateStr) {
         }
         values[id] = currValue;
       }
-      return { ...curr, values };
+      const newData = { ...curr, values };
+      saveToLocalStorage(newData);
+      return newData;
     });
   };
 
