@@ -14,7 +14,7 @@ export function formatDate(date) {
 }
 
 export function replaceAllWhiteSpace(str) {
-  return str.replace(/\s+/, "");
+  return str.replace(/\s+/g, "");
 }
 
 export function formatDuration(ms) {
