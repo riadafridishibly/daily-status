@@ -13,7 +13,7 @@ export function formatDate(date) {
   return format(date, "yyyy-MM-dd");
 }
 
-export function replaceAllWhiteSpace(str) {
+function replaceAllWhiteSpace(str) {
   return str.replace(/\s+/g, "");
 }
 
@@ -52,6 +52,10 @@ export function calculateTotal(values) {
 }
 
 export function duration(durLine) {
+  if (!durLine) {
+    return 0;
+  }
+  durLine = replaceAllWhiteSpace(durLine);
   const regex = /[-+]?(?:[0-9]*(?:\.[0-9]*)?[a-z]+)+/g;
   const found = durLine.match(regex);
   if (!found) {

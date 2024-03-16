@@ -1,13 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import StatusInput from "./components/StatusInput";
-import {
-  today,
-  formatDuration,
-  calculateTotal,
-  replaceAllWhiteSpace,
-  duration,
-} from "./utils/utils";
+import { today, formatDuration, calculateTotal, duration } from "./utils/utils";
 import { useApplicationState } from "./hooks/hooks";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -36,7 +30,7 @@ function App() {
 
   const getDuration = (id) => {
     return () => {
-      let durString = replaceAllWhiteSpace(items.values[id].time);
+      let durString = items?.values[id]?.time;
       return formatDuration(duration(durString));
     };
   };
