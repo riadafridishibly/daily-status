@@ -44,8 +44,8 @@ function App() {
           return formatDuration(calculateTotal(items.values), " ");
         }}
       />
-      <div className="pt-10 w-full flex flex-col items-center justify-center">
-        <div className="max-w-screen-lg py-8 px-2 md:px-10 w-full flex flex-col items-center justify-center">
+      <div className="flex w-full flex-col items-center justify-center pt-10">
+        <div className="flex w-full max-w-screen-lg flex-col items-center justify-center px-2 py-8 md:px-10">
           {items.orders.map((id, index) => (
             <StatusInput
               key={id}
@@ -64,7 +64,7 @@ function App() {
           ))}
         </div>
         <button
-          className="text-xl px-10 py-2 rounded bg-blue-500 hover:bg-blue-700 text-white"
+          className="rounded bg-blue-500 px-10 py-2 text-xl text-white hover:bg-blue-700"
           onClick={add}
         >
           + Add

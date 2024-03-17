@@ -15,10 +15,10 @@ function Header({ dateString, setCurrentDate, getTotal }) {
   let formattedDate = formatDate(date);
   const datePickerRef = useRef(null);
   return (
-    <div className="w-full flex flex-col items-center">
-      <h1 className="text-3xl font-semibold p-4">DailyStatus</h1>
+    <div className="flex w-full flex-col items-center">
+      <h1 className="p-4 text-3xl font-semibold">DailyStatus</h1>
       <p className="text-slate-500">Track Your Daily Status</p>
-      <div className="flex flex-col items-center justify-center md:flex-row md:gap-12 pt-8">
+      <div className="flex flex-col items-center justify-center pt-8 md:flex-row md:gap-12">
         <div className="flex items-center justify-center">
           <input
             ref={datePickerRef}
@@ -43,7 +43,7 @@ function Header({ dateString, setCurrentDate, getTotal }) {
           <span className="text-2xl">{format(date, "Do")}</span> day of the year
         </span>
       </div>
-      <div className="flex items-baseline pt-8 gap-2">
+      <div className="flex items-baseline gap-2 pt-8">
         <span className="text-2xl text-gray-500">Total</span>
         <span className="text-4xl font-semibold">{getTotal() || "0h"}</span>
       </div>

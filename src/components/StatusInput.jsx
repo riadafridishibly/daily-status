@@ -8,7 +8,7 @@ function DeleteButton() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -29,24 +29,24 @@ function StatusInput({
   getTimeString,
 }) {
   return (
-    <div className="w-full flex flex-row items-center py-1 gap-1 md:gap-4">
-      <div className="basis-3/5 flex flex-row items-center">
+    <div className="flex w-full flex-row items-center gap-1 py-1 md:gap-4">
+      <div className="flex basis-3/5 flex-row items-center">
         <div className="mr-3 text-xl">{index + 1}.</div>
-        <div className="flex flex-row w-full relative items-center justify-center">
+        <div className="relative flex w-full flex-row items-center justify-center">
           <input
             tabIndex={1}
-            className="block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500 pr-9"
+            className="block w-full rounded-md border border-slate-300 bg-white px-3 py-2 pr-9 text-sm placeholder-slate-400
+      shadow-sm invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500
+      focus:outline-none focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500
+      focus:invalid:ring-pink-500 disabled:border-slate-200
+      disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none"
             type="text"
             placeholder="Name of the task"
             onChange={onTitleChange}
             defaultValue={getTitle()}
           ></input>
           <button
-            className="text-red-500 px-2 py-2 absolute end-0"
+            className="absolute end-0 px-2 py-2 text-red-500"
             onClick={() => {
               let del = confirm("Are you sure?");
               if (del) {
@@ -62,18 +62,18 @@ function StatusInput({
       <div className="basis-2/5">
         <div className="flex flex-row items-center">
           <input
-            className="block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+            className="block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm placeholder-slate-400 shadow-sm
+      invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none
+      focus:ring-1 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+      disabled:border-slate-200 disabled:bg-slate-50
+      disabled:text-slate-500 disabled:shadow-none"
             type="text"
             tabIndex={1}
             placeholder="2h + 3h35m - 25m"
             onChange={onTimeChange}
             defaultValue={getTimeString()}
           ></input>
-          <span className="py-2 text-center bg-slate-300 rounded-md ml-1 w-4/12 h-full">
+          <span className="ml-1 h-full w-4/12 rounded-md bg-slate-300 py-2 text-center">
             {getTimeSum() || "0h"}
           </span>
         </div>
