@@ -37,10 +37,10 @@ function Header({ dateString, setCurrentDate, getTotal }) {
           </button>
         </div>
         <span>
-          <span className="text-2xl"> {format(date, ISO_WEEK)}</span> Week
+          <span className="text-2xl"> {format(date, ISO_WEEK)}</span> week
         </span>
         <span>
-          <span className="text-2xl">{format(date, "Do")}</span> day of year
+          <span className="text-2xl">{format(date, "Do")}</span> day of the year
         </span>
       </div>
       <div className="flex items-baseline pt-8 gap-2">
