@@ -17,7 +17,10 @@ function replaceAllWhiteSpace(str) {
   return str.replace(/\s+/g, "");
 }
 
-export function formatDuration(ms) {
+export function formatDuration(ms, delim) {
+  if (!delim) {
+    delim = "";
+  }
   let neg = false;
   if (ms < 0) {
     ms = -ms;
@@ -33,7 +36,7 @@ export function formatDuration(ms) {
   let str = Object.entries(time)
     .filter((val) => val[1] !== 0)
     .map(([key, val]) => `${val}${key}`)
-    .join("");
+    .join(delim);
   if (neg) {
     str = `-${str}`;
   }
