@@ -31,7 +31,7 @@ function App() {
   const getDuration = (id) => {
     return () => {
       let durString = items?.values[id]?.time;
-      return formatDuration(duration(durString));
+      return formatDuration(duration(durString), " ");
     };
   };
 
@@ -41,11 +41,11 @@ function App() {
         dateString={currentDate}
         setCurrentDate={setCurrentDate}
         getTotal={() => {
-          return formatDuration(calculateTotal(items.values));
+          return formatDuration(calculateTotal(items.values), " ");
         }}
       />
       <div className="pt-10 w-full flex flex-col items-center justify-center">
-        <div className="max-w-screen-lg py-8 px-10 w-full flex flex-col items-center justify-center">
+        <div className="max-w-screen-lg py-8 px-2 md:px-10 w-full flex flex-col items-center justify-center">
           {items.orders.map((id, index) => (
             <StatusInput
               key={id}

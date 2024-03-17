@@ -29,11 +29,12 @@ function StatusInput({
   getTimeString,
 }) {
   return (
-    <div className="w-full flex flex-row justify-start items-center gap-x-10 py-1">
+    <div className="w-full flex flex-row items-center py-1 gap-1 md:gap-4">
       <div className="basis-3/5 flex flex-row items-center">
         <div className="mr-3 text-xl">{index + 1}.</div>
         <div className="flex flex-row w-full relative items-center justify-center">
           <input
+            tabIndex={1}
             className="block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
       disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
@@ -52,6 +53,7 @@ function StatusInput({
                 onRemove();
               }
             }}
+            tabIndex={0}
           >
             <DeleteButton />
           </button>
@@ -66,11 +68,12 @@ function StatusInput({
       invalid:border-pink-500 invalid:text-pink-600
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
             type="text"
+            tabIndex={1}
             placeholder="2h + 3h35m - 25m"
             onChange={onTimeChange}
             defaultValue={getTimeString()}
           ></input>
-          <span className="py-2 text-center bg-slate-300 rounded-md outline outline-slate-400 ml-1 w-4/12 h-full">
+          <span className="py-2 text-center bg-slate-300 rounded-md ml-1 w-4/12 h-full">
             {getTimeSum() || "0h"}
           </span>
         </div>

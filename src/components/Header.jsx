@@ -18,7 +18,7 @@ function Header({ dateString, setCurrentDate, getTotal }) {
     <div className="w-full flex flex-col items-center">
       <h1 className="text-3xl font-semibold p-4">DailyStatus</h1>
       <p className="text-slate-500">Track Your Daily Status</p>
-      <div className="flex flex-row items-center justify-center gap-12 pt-8">
+      <div className="flex flex-col items-center justify-center md:flex-row md:gap-12 pt-8">
         <div className="flex items-center justify-center">
           <input
             ref={datePickerRef}
