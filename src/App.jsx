@@ -24,6 +24,20 @@ function App() {
       debouncedUpdate(id, { time: event.target.value });
     };
   };
+
+  function boolToInt(b) {
+    if (b) {
+      return 1;
+    }
+    return 0;
+  }
+
+  const handleChecked = (id) => {
+    return (event) => {
+      update(id, { checked: boolToInt(event.target.checked) });
+    };
+  };
+
   const handleRemove = (id) => {
     return () => remove(id);
   };
@@ -52,12 +66,16 @@ function App() {
               index={index}
               onTitleChange={handleTitleChange(id)}
               onTimeChange={handleTimeChange(id)}
+              onChecked={handleChecked(id)}
               getTimeSum={getDuration(id)}
               getTitle={() => {
                 return items?.values[id]?.title || "";
               }}
               getTimeString={() => {
                 return items?.values[id]?.time || "";
+              }}
+              getChecked={() => {
+                return items?.values[id]?.checked ?? 0;
               }}
               onRemove={handleRemove(id)}
             />

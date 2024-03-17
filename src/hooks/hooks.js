@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export function useApplicationState(dateStr) {
   if (!dateStr) {
-    dateStr = today();
+    throw Error("date string not defined");
   }
 
   const [items, setItems] = useState({
@@ -29,7 +29,10 @@ export function useApplicationState(dateStr) {
     setItems((curr) => {
       const nextId = getId();
       const orders = [...curr.orders, nextId];
-      const values = { ...curr.values, [nextId]: { title: "", time: "" } };
+      const values = {
+        ...curr.values,
+        [nextId]: { title: "", time: "", checked: 0 },
+      };
       const newData = { orders, values };
       saveToLocalStorage(newData);
       return newData;
@@ -61,6 +64,9 @@ export function useApplicationState(dateStr) {
         }
         if ("time" in value) {
           currValue["time"] = value["time"];
+        }
+        if ("checked" in value) {
+          currValue["checked"] = value["checked"];
         }
         values[id] = currValue;
       }

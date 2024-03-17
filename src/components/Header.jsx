@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { addDays, format, subDays } from "date-fns";
 import React, { useRef } from "react";
 import { formatDate } from "../utils/utils";
 
@@ -43,9 +43,57 @@ function Header({ dateString, setCurrentDate, getTotal }) {
           <span className="text-2xl">{format(date, "Do")}</span> day of the year
         </span>
       </div>
-      <div className="flex items-baseline gap-2 pt-8">
-        <span className="text-2xl text-gray-500">Total</span>
-        <span className="text-4xl font-semibold">{getTotal() || "0h"}</span>
+      <div className="flex w-full max-w-screen-lg flex-row items-baseline justify-around px-8 pt-8">
+        <button
+          className="rounded-md border border-black px-8 py-2"
+          onClick={() => {
+            setCurrentDate((curr) => {
+              return formatDate(subDays(curr, 1));
+            });
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <div className="flex w-1/3 items-baseline justify-center gap-2">
+          <span className="text-2xl text-gray-500">Total</span>
+          <span className="text-4xl font-semibold">{getTotal() || "0h"}</span>
+        </div>
+        <button
+          className="rounded-md border border-black px-8 py-2"
+          onClick={() => {
+            setCurrentDate((curr) => {
+              return formatDate(addDays(curr, 1));
+            });
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   );
