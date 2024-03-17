@@ -1,8 +1,14 @@
-# React + Vite
+# Daily Status
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Visit: https://riadafridishibly.github.io/daily-status/
 
-Currently, two official plugins are available:
+This is a simple application to track your daily tasks and sum up the total time spent on them. The data is saved in the browser's local storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run locally
+
+```sh
+git clone https://github.com/riadafridishibly/daily-status.git
+cd daily-status
+yarn
+yarn dev
+```
