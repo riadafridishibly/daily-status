@@ -38,7 +38,7 @@ function StatusInput({
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
       disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
       invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500 pr-9"
             type="text"
             placeholder="Name of the task"
             onChange={onTitleChange}
@@ -57,7 +57,7 @@ function StatusInput({
           </button>
         </div>
       </div>
-      <div className="basis-2/5 relative">
+      <div className="basis-2/5">
         <div className="flex flex-row items-center">
           <input
             className="block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
@@ -70,8 +70,8 @@ function StatusInput({
             onChange={onTimeChange}
             defaultValue={getTimeString()}
           ></input>
-          <span className="py-2 text-center rounded-r-md bg-slate-300 w-3/12 h-full absolute top-0 end-0">
-            {getTimeSum()}
+          <span className="py-2 text-center bg-slate-300 rounded-md outline outline-slate-400 ml-1 w-4/12 h-full">
+            {getTimeSum() || "0h"}
           </span>
         </div>
       </div>
